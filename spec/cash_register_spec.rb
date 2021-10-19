@@ -41,7 +41,7 @@ describe 'CashRegister' do
   describe '#apply_discount' do
     context 'when the cash register was initialized with an employee discount' do
       it 'applies the discount to the total price' do
-        cash_register_with_discount.add_item("macbook air", 1000)
+        cash_register_with_discount.add_item("macbook air", 1000, 1)
         cash_register_with_discount.apply_discount
         expect(cash_register_with_discount.total).to eq(800)
       end
@@ -54,7 +54,7 @@ describe 'CashRegister' do
       it 'reduces the total' do
         cash_register.total = 0
         cash_register_with_discount.add_item("macbook air", 1000)
-        expect { cash_register_with_discount.apply_discount }.to change(cash_register_with_discount, :total).by(-200)
+        expect { cash_register_with_discount.apply_discount }.to change(cash_register_with_discount, :total).by(-220)
       end
     end
 
